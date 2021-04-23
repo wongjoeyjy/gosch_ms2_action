@@ -31,8 +31,8 @@ jobs:
       - if: ${{success()}}
         name: Test Goblin
         run: |
-          go test -v
-          go test -v | go2xunit >report.xml
+          go test -v -cover
+          go test -v -cover | go2xunit >report.xml
       - if: ${{failure()}}
         name: Create Issues
         uses: nashmaniac/create-issue-action@v1.1
@@ -50,3 +50,6 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           files: report.xml
         
+      - name: List out directory
+        run: |
+          ls
