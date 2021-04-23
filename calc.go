@@ -1,26 +1,21 @@
-package calc
+package main
 
-// Add two numbers and return the result.
-func Add(val1, val2 int) int {
-	return val1 + val2
+// Add two numbers and return the results
+func Add(a, b int) int {
+	return a + b
 }
 
 // Subtract two numbers and return the result.
-func Subtract(val1, val2 int) int {
-	return val1 - val2
+func Subtract(a, b int) int {
+	return a - b
 }
 
 // Multiply two numbers and return the result.
-func Multiply(val1, val2 int) int {
-	return val1 * val2
+func Multiply(a, b int) int {
+	return a * b
 }
 
 // Divide two numbers and return the result.
-func Divide(val1, val2 int) float64 {
-	defer func() {
-		if r := recover(); r != nil {
-			return
-		}
-	}()
-	return float64(val1) / float64(val2)
+func Divide(a, b int) float64 {
+	return float64(a / b)
 }
