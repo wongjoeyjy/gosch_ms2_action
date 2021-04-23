@@ -11,7 +11,7 @@ func TestCalculator(t *testing.T) {
 	g := Goblin(t)
 	g.Describe("Calculator", func() {
 		g.It("should add two numbers ", func() {
-			g.Assert(Add(1, 2)).Equal(4)
+			g.Assert(Add(1, 2)).Equal(3)
 		})
 
 		g.It("should subtract two numbers", func() {
