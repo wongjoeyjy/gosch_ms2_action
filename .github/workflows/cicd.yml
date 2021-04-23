@@ -28,10 +28,21 @@ jobs:
       - if: ${{success()}}
         name: Test Goblin
         run: |
+          go test -v
           go test -v | go2xunit >report.xml
-      - if: ${{success()}}
-        name: Display test information
+      - if: ${{failure()}}
+        name: Create Issues
+        uses: nashmaniac/create-issue-action@v1.1
+        with:
+          title: Build Failed!
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}
+          labels: worflow-failed
+          body: Workflow failed for commit ${{github.sha}}
+          
+      - name: Display test information
         uses: EnricoMi/publish-unit-test-result-action@v1.5
+        if: always()
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           files: report.xml
